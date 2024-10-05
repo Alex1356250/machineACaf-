@@ -13,28 +13,24 @@
         let veganMilk;
         let confirmOrder = false;
 
-        // Fonction pour demander et valider la boisson
         function askBeverage() {
             do {
                 beverage = prompt("Bienvenue au WildBucks CoffeeShop!\nQue désirez-vous? un thé 🫖 ou un café ☕️?").toLowerCase();
             } while (beverage !== "thé" && beverage !== "café");
         }
 
-        // Fonction pour demander et valider la quantité de sucre
         function askSugar() {
             do {
                 sugar = prompt(`Désirez vous votre boisson avec ou sans sucre?`).toLowerCase();
             } while (sugar !== "avec" && sugar !== "sans");
         }
 
-        // Fonction pour demander et valider la présence de lait
         function askMilk() {
             do {
                 milk = prompt("Désirez-vous votre boisson avec ou sans lait?").toLowerCase();
             } while (milk !== "avec" && milk !== "sans");
         }
 
-        // Fonction pour demander et valider le lait végétal
         function askVeganMilk() {
             if (milk === "avec") {
                 do {
@@ -43,14 +39,12 @@
             }
         }
 
-        // Boucle principale pour confirmer la commande
         while (!confirmOrder) {
-            askBeverage();  // Demande la boisson
-            askSugar();     // Demande le sucre
-            askMilk();      // Demande le lait
-            askVeganMilk(); // Demande le lait végétal si nécessaire
+            askBeverage();
+            askSugar();
+            askMilk()
+            askVeganMilk();
 
-            // Construction du message de confirmation
             let orderMessage = `Vous avez commandé un ${beverage} ${sugar} sucre`;
             if (milk === "avec") {
                 orderMessage += `, ${milk} lait`;
@@ -60,11 +54,10 @@
             }
             orderMessage += ". Est-ce bien cela? (oui ou non)";
 
-            // Confirmer la commande
             confirmOrder = prompt(orderMessage).toLowerCase() === "oui";
         }
 
-        alert("Merci pour votre commande!");
+        alert("Merci pour votre commande! Have a nice beverage 🙏 ");
     </script>
 </body>
 </html>
