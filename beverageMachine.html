@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WildBucks Coffee</title>
+</head>
+<body>
+    <script>
+        let beverage;
+        let sugar;
+        let milk;
+        let veganMilk;
+        let confirmOrder = false;
+
+        function askBeverage() {
+            do {
+                beverage = prompt("Bienvenue au WildBucks CoffeeShop!\nQue désirez-vous? un thé 🫖 ou un café ☕️?\n(Répondre par `thé` ou `café` s'il vous plait)").toLowerCase();
+            } while (beverage !== "thé" && beverage !== "café");
+        }
+
+        function askSugar() {
+            do {
+                sugar = prompt(`Désirez vous votre boisson avec ou sans sucre?\n(répondre "avec" ou "sans")`).toLowerCase();
+            } while (sugar !== "avec" && sugar !== "sans");
+        }
+
+        function askMilk() {
+            do {
+                milk = prompt("Désirez-vous votre boisson avec ou sans lait🥛?\n(répondre `avec` ou `sans`)").toLowerCase();
+            } while (milk !== "avec" && milk !== "sans");
+        }
+
+        function askVeganMilk() {
+            if (milk === "avec") {
+                do {
+                    veganMilk = prompt("Avec ou sans lait végétal?\n(répondre `avec` ou `sans`)").toLowerCase();
+                } while (veganMilk !== "avec" && veganMilk !== "sans");
+            }
+        }
+
+        while (!confirmOrder) {
+            askBeverage();
+            askSugar(); 
+            askMilk();      
+            askVeganMilk(); 
+
+            let orderMessage = `Vous avez commandé un ${beverage} ${sugar} sucre`;
+            if (milk === "avec") {
+                orderMessage += `, ${milk} lait`;
+                if (veganMilk === "avec") {
+                    orderMessage += ` et ${veganMilk} lait végétal`;
+                }
+            }
+            orderMessage += ". Est-ce bien cela?\n (Répondre par `oui` ou `non`)";
+
+            confirmOrder = prompt(orderMessage).toLowerCase() === "oui";
+        }
+
+        alert("Merci pour votre commande!\n 🙏 Have a nice day 🙏 ");
+    </script>
+</body>
+</html>
